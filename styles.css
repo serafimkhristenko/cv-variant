@@ -3395,3 +3395,134 @@ summary:focus-visible,
     inset 0 0 11px rgba(255, 255, 255, 0.12);
   filter: brightness(1.07);
 }
+
+/* ═══════════════════════════════════════════════
+   AI GALLERY FILTER
+═══════════════════════════════════════════════ */
+.ai-gallery-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 16px;
+}
+
+.filter-btn {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  cursor: var(--cursor-pixel);
+  transition: color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.filter-btn.is-active,
+.filter-btn:hover {
+  color: var(--acid);
+  border-color: var(--acid);
+  box-shadow: 0 0 8px rgba(200, 241, 53, 0.25);
+}
+
+.gallery-shot.is-hidden {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════
+   CASE SPOILERS (SMM section)
+═══════════════════════════════════════════════ */
+.case-list--spoilers {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.section-subhead {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.case-spoiler {
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+
+.case-spoiler-summary {
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 20px;
+  row-gap: 12px;
+  align-items: start;
+}
+
+.case-spoiler-meta {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.case-spoiler-meta h3 {
+  margin: 4px 0 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.case-spoiler-meta p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.case-spoiler-summary .chip-row {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.case-spoiler-toggle {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  font-size: 11px;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+
+.case-spoiler-body {
+  display: none;
+  border-top: 1px solid var(--line-soft);
+}
+
+.case-spoiler-body.is-open {
+  display: block;
+}
+
+.case-card--inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+
+@media (max-width: 700px) {
+  .case-card--inline {
+    grid-template-columns: 1fr;
+  }
+
+  .case-spoiler-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .case-spoiler-toggle {
+    grid-column: 1;
+    grid-row: 3;
+    width: fit-content;
+  }
+}

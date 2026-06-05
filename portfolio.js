@@ -497,3 +497,46 @@ document.querySelectorAll(".case-card").forEach((card) => {
   const first = card.querySelector("[data-variant].active") || buttons[0];
   if (first) selectVariant(first);
 });
+
+/* ═══════════════════════════════════════════════
+   AI GALLERY FILTER
+═══════════════════════════════════════════════ */
+(function () {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('#ai-gallery-grid .gallery-shot');
+
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const cat = btn.dataset.filter;
+      galleryItems.forEach(item => {
+        if (cat === 'all' || item.dataset.filterCat === cat) {
+          item.classList.remove('is-hidden');
+        } else {
+          item.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   CASE SPOILERS
+═══════════════════════════════════════════════ */
+(function () {
+  document.querySelectorAll('.case-spoiler').forEach(spoiler => {
+    const toggle = spoiler.querySelector('.case-spoiler-toggle');
+    const body = spoiler.querySelector('.case-spoiler-body');
+    if (!toggle || !body) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = body.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.textContent = isOpen ? 'Свернуть' : 'Подробнее';
+    });
+  });
+})();
