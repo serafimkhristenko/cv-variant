@@ -3526,3 +3526,24 @@ summary:focus-visible,
     width: fit-content;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   SMM SPOILER (cv.html)
+═══════════════════════════════════════════════ */
+.smm-spoiler {
+  position: relative;
+}
+
+.smm-spoiler-body {
+  display: none;
+  margin-bottom: 16px;
+}
+
+.smm-spoiler-body.is-open {
+  display: block;
+}
+
+.smm-spoiler-toggle {
+  font-size: 11px;
+  padding: 7px 16px;
+}

@@ -540,3 +540,18 @@ document.querySelectorAll(".case-card").forEach((card) => {
     });
   });
 })();
+
+/* ═══════════════════════════════════════════════
+   SMM SPOILER (cv.html)
+═══════════════════════════════════════════════ */
+(function () {
+  const toggle = document.querySelector('[data-smm-toggle]');
+  const body = document.querySelector('[data-smm-body]');
+  if (!toggle || !body) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = body.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.textContent = isOpen ? 'Скрыть SMM-опыт' : 'Показать SMM-опыт';
+  });
+})();
