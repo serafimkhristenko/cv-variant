@@ -17,7 +17,6 @@
   overflow: hidden;
   background: #111317;
   border: 0;
-  cursor: zoom-in;
 }
 
 .hero-feature-image img {
@@ -147,7 +146,6 @@
   overflow: hidden;
   background: var(--surface-3);
   border: 1px solid var(--line);
-  cursor: zoom-in;
 }
 
 .project-image img {
@@ -204,6 +202,15 @@
   min-height: 520px;
 }
 
+.project-video-grid .media-placeholder {
+  min-height: 520px;
+}
+
+.project-support-grid--style-placeholders {
+  grid-auto-rows: minmax(260px, 1fr);
+  min-height: 700px;
+}
+
 .project-style-slider {
   min-height: 700px;
 }
@@ -251,7 +258,8 @@
     min-height: auto;
   }
 
-  .hero-feature-image img {
+  .hero-feature-image,
+  .hero-feature-image .media-placeholder {
     min-height: 112vw;
   }
 
@@ -305,8 +313,18 @@
     grid-auto-rows: auto;
   }
 
-  .project-video-grid .ai-video-card video {
+  .project-video-grid .ai-video-card video,
+  .project-video-grid .media-placeholder {
     min-height: 140vw;
+  }
+
+  .project-support-grid--style-placeholders {
+    grid-auto-rows: auto;
+    min-height: 0;
+  }
+
+  .project-support-grid--style-placeholders .project-image {
+    min-height: 110vw;
   }
 
   .project-style-slider,
