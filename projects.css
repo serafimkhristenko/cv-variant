@@ -2,6 +2,15 @@
   --cursor-pixel-active: url("assets/cursor-user-stretched-active.webp?v=green-hover") 4 5, pointer;
 }
 
+.hero.hero--text-only {
+  grid-template-columns: 1fr;
+  min-height: auto;
+}
+
+.hero--text-only .hero-copy {
+  min-height: 520px;
+}
+
 .hero-feature {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
@@ -258,9 +267,8 @@
     min-height: auto;
   }
 
-  .hero-feature-image,
-  .hero-feature-image .media-placeholder {
-    min-height: 112vw;
+  .hero.hero--text-only .hero-copy {
+    min-height: auto;
   }
 
   .project-case {
