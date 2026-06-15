@@ -1,9 +1,10 @@
-name: Deploy site to GitHub Pages
+name: Deploy both portfolio versions to GitHub Pages
 
 on:
   push:
     branches:
       - main
+      - archive/full-collage
   workflow_dispatch:
 
 env:
@@ -25,14 +26,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out current version
         uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current
+
+      - name: Check out full collage version
+        uses: actions/checkout@v4
+        with:
+          ref: archive/full-collage
+          path: full-collage-source
+
+      - name: Assemble both sites
+        run: |
+          mkdir -p site/full-collage
+          rsync -a --exclude '.git/' --exclude '.github/' current/ site/
+          rsync -a --exclude '.git/' --exclude '.github/' full-collage-source/ site/full-collage/
+          touch site/.nojekyll site/full-collage/.nojekyll
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+
       - name: Upload static site artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
